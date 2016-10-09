@@ -1,5 +1,6 @@
 package com.example.rain.matchpictures;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         xClicks[0] = 0;
         xClicks[1] = 0;
+        clickCount = 0;
 
         one = (ImageView) findViewById(R.id.One);
         two = (ImageView) findViewById(R.id.Two);
@@ -81,26 +83,45 @@ public class MainActivity extends AppCompatActivity {
         fifteen = (ImageView) findViewById(R.id.Fifteen);
         sixteen = (ImageView) findViewById(R.id.Sixteen);
 
+        scoreText.setText("");
+        for(int i = 0; i < 16; i++) {
+            scoreText.append(" " + game.getNumber(i));
+        }
+        scoreText.append("\n");
+
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 1;
+                xClicks[clickCount] = 0;
                 clickCount++;
-                one.setImageResource(images[game.getNumber(1)]);
+                one.setImageResource(images[game.getNumber(0)]);
                 if (clickCount == 2) {
-                    jude();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            jude();
+                        }
+                    }, 3000);
                 }
+                scoreText.append(" " + game.getNumber(0));
             }
         });
 
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 2;
+                xClicks[clickCount] = 1;
                 clickCount++;
-                two.setImageResource(images[game.getNumber(2)]);
+                two.setImageResource(images[game.getNumber(1)]);
+                scoreText.append(" " + game.getNumber(1));
+
                 if (clickCount == 2) {
-                    jude();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            jude();
+                        }
+                    }, 1000);
                 }
             }
         });
@@ -108,9 +129,10 @@ public class MainActivity extends AppCompatActivity {
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 3;
+                xClicks[clickCount] = 2;
                 clickCount++;
-                three.setImageResource(images[game.getNumber(3)]);
+                three.setImageResource(images[game.getNumber(2)]);
+                scoreText.append(" " + game.getNumber(2));
                 if (clickCount == 2) {
                     jude();
                 }
@@ -120,21 +142,24 @@ public class MainActivity extends AppCompatActivity {
         four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 4;
+                xClicks[clickCount] = 3;
                 clickCount++;
-                four.setImageResource(images[game.getNumber(4)]);
+                four.setImageResource(images[game.getNumber(3)]);
+                scoreText.append(" " + game.getNumber(3));
+
                 if (clickCount == 2) {
                     jude();
                 }
+
             }
         });
 
         five.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 5;
+                xClicks[clickCount] = 4;
                 clickCount++;
-                five.setImageResource(images[game.getNumber(5)]);
+                five.setImageResource(images[game.getNumber(4)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -144,9 +169,9 @@ public class MainActivity extends AppCompatActivity {
         six.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 6;
+                xClicks[clickCount] = 5;
                 clickCount++;
-                six.setImageResource(images[game.getNumber(6)]);
+                six.setImageResource(images[game.getNumber(5)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -156,9 +181,9 @@ public class MainActivity extends AppCompatActivity {
         seven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 7;
+                xClicks[clickCount] = 6;
                 clickCount++;
-                seven.setImageResource(images[game.getNumber(7)]);
+                seven.setImageResource(images[game.getNumber(6)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -169,9 +194,9 @@ public class MainActivity extends AppCompatActivity {
         eight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 8;
+                xClicks[clickCount] = 7;
                 clickCount++;
-                eight.setImageResource(images[game.getNumber(8)]);
+                eight.setImageResource(images[game.getNumber(7)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -181,9 +206,9 @@ public class MainActivity extends AppCompatActivity {
         nine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 9;
+                xClicks[clickCount] = 8;
                 clickCount++;
-                nine.setImageResource(images[game.getNumber(9)]);
+                nine.setImageResource(images[game.getNumber(8)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -194,9 +219,9 @@ public class MainActivity extends AppCompatActivity {
         ten.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 10;
+                xClicks[clickCount] = 9;
                 clickCount++;
-                ten.setImageResource(images[game.getNumber(10)]);
+                ten.setImageResource(images[game.getNumber(9)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -206,9 +231,9 @@ public class MainActivity extends AppCompatActivity {
         eleven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 11;
+                xClicks[clickCount] = 10;
                 clickCount++;
-                eleven.setImageResource(images[game.getNumber(11)]);
+                eleven.setImageResource(images[game.getNumber(10)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -218,9 +243,9 @@ public class MainActivity extends AppCompatActivity {
         twelve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 12;
+                xClicks[clickCount] = 11;
                 clickCount++;
-                twelve.setImageResource(images[game.getNumber(12)]);
+                twelve.setImageResource(images[game.getNumber(11)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -230,9 +255,9 @@ public class MainActivity extends AppCompatActivity {
         thirteen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 13;
+                xClicks[clickCount] = 12;
                 clickCount++;
-                thirteen.setImageResource(images[game.getNumber(13)]);
+                thirteen.setImageResource(images[game.getNumber(12)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -242,9 +267,9 @@ public class MainActivity extends AppCompatActivity {
         fourteen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 14;
+                xClicks[clickCount] = 13;
                 clickCount++;
-                fourteen.setImageResource(images[game.getNumber(14)]);
+                fourteen.setImageResource(images[game.getNumber(13)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -254,9 +279,9 @@ public class MainActivity extends AppCompatActivity {
         fifteen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 15;
+                xClicks[clickCount] = 14;
                 clickCount++;
-                fifteen.setImageResource(images[game.getNumber(15)]);
+                fifteen.setImageResource(images[game.getNumber(14)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -266,9 +291,9 @@ public class MainActivity extends AppCompatActivity {
         sixteen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xClicks[clickCount] = 16;
+                xClicks[clickCount] = 15;
                 clickCount++;
-                sixteen.setImageResource(images[game.getNumber(16)]);
+                sixteen.setImageResource(images[game.getNumber(15)]);
                 if (clickCount == 2) {
                     jude();
                 }
@@ -281,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
     void jude() {
         if(game.compare(xClicks[0], xClicks[1])) {
             score ++;
-            scoreText.setText("" + score);
+            //scoreText.setText("" + score);
             game.setNumberToZreo(xClicks[0]);
             game.setNumberToZreo(xClicks[1]);
         }
@@ -289,58 +314,57 @@ public class MainActivity extends AppCompatActivity {
             resetImage(xClicks[0]);
             resetImage(xClicks[1]);
         }
-
         clickCount = 0;
     }
 
     void resetImage(int imId) {
         switch (imId) {
-            case 1:
+            case 0:
                 one.setImageResource(imagecard);
                 break;
-            case 2:
+            case 1:
                 two.setImageResource(imagecard);
                 break;
-            case 3:
+            case 2:
                 three.setImageResource(imagecard);
             break;
-            case 4:
+            case 3:
                 four.setImageResource(imagecard);
             break;
-            case 5:
+            case 4:
                 five.setImageResource(imagecard);
             break;
-            case 6:
+            case 5:
                 six.setImageResource(imagecard);
             break;
-            case 7:
+            case 6:
                 seven.setImageResource(imagecard);
             break;
-            case 8:
+            case 7:
                 eight.setImageResource(imagecard);
             break;
-            case 9:
+            case 8:
                 nine.setImageResource(imagecard);
             break;
-            case 10:
+            case 9:
                 ten.setImageResource(imagecard);
             break;
-            case 11:
+            case 10:
                 eleven.setImageResource(imagecard);
             break;
-            case 12:
+            case 11:
                 twelve.setImageResource(imagecard);
             break;
-            case 13:
+            case 12:
                 thirteen.setImageResource(imagecard);
             break;
-            case 14:
+            case 13:
                 fourteen.setImageResource(imagecard);
             break;
-            case 15:
+            case 14:
                 fifteen.setImageResource(imagecard);
             break;
-            case 16:
+            case 15:
                 sixteen.setImageResource(imagecard);
             break;
             default:
