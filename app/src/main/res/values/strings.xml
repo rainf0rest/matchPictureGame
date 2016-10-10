@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MatchPictures</string>
+    <string name="dia_game_win_title">you win!</string>
+    <string name="dia_game_win_content">your score: </string>
+    <string name="dia_game_win_posbtn">again</string>
+    <string name="dia_game_win_negbtn">exit</string>
+
 </resources>

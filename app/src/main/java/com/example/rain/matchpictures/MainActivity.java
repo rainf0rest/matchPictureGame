@@ -1,8 +1,10 @@
 package com.example.rain.matchpictures;
 
+import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView fourteen;
     ImageView fifteen;
     ImageView sixteen;
+
+    private AlertDialog.Builder builder;
 
     TextView scoreText;
     int score = 0;
@@ -284,6 +288,7 @@ public class MainActivity extends AppCompatActivity {
                     clickCount = 0;
                     if(game.isempty()) {
                         Toast.makeText(MainActivity.this,"you win!!", Toast.LENGTH_SHORT).show();
+                        showDia();
                     }
                 }
                 else {
@@ -294,6 +299,57 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
+    }
+
+    void showDia() {
+
+        builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.win);
+        builder.setTitle(R.string.dia_game_win_title);
+        builder.setMessage("score: " + score);
+
+        builder.setPositiveButton(R.string.dia_game_win_posbtn, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Toast.makeText(MainActivity.this,"pos",Toast.LENGTH_SHORT).show();
+                resetGame();
+            }
+        });
+
+        builder.setNegativeButton(R.string.dia_game_win_negbtn, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Toast.makeText(MainActivity.this,"neg",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+        builder.setCancelable(true);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
+    }
+
+    void resetGame() {
+        game.init();
+
+        one.setImageResource(imagecard);
+        two.setImageResource(imagecard);
+        three.setImageResource(imagecard);
+        four.setImageResource(imagecard);
+        five.setImageResource(imagecard);
+        six.setImageResource(imagecard);
+        seven.setImageResource(imagecard);
+        eight.setImageResource(imagecard);
+        nine.setImageResource(imagecard);
+        ten.setImageResource(imagecard);
+        eleven.setImageResource(imagecard);
+        twelve.setImageResource(imagecard);
+        thirteen.setImageResource(imagecard);
+        fourteen.setImageResource(imagecard);
+        fifteen.setImageResource(imagecard);
+        sixteen.setImageResource(imagecard);
 
     }
 
