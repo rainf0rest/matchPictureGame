@@ -221,6 +221,13 @@
                 android:src="@drawable/card"/>
         </GridLayout>
     </LinearLayout>
+
+    <WebView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/webicon"
+        android:visibility="gone">
+    </WebView>
     <Chronometer
         android:layout_width="240dp"
         android:layout_height="234dp"

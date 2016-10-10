@@ -1,13 +1,17 @@
 package com.example.rain.matchpictures;
 
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView scoreText;
     int score = 0;
+
+    WebView webView;
 
     Game game;
 
@@ -83,11 +89,14 @@ public class MainActivity extends AppCompatActivity {
         fifteen = (ImageView) findViewById(R.id.Fifteen);
         sixteen = (ImageView) findViewById(R.id.Sixteen);
 
+        webView = (WebView) findViewById(R.id.webicon);
+        webView.loadUrl("https://icons8.com/");
+
         scoreText.setText("");
-        for(int i = 0; i < 16; i++) {
+        /*for(int i = 0; i < 16; i++) {
             scoreText.append(" " + game.getNumber(i));
         }
-        scoreText.append("\n");
+        scoreText.append("\n");*/
 
         one.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,7 +277,14 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 if(game.compare(xClicks[0], xClicks[1]) == true) {
+                    game.setNumberToZreo(xClicks[0]);
+                    game.setNumberToZreo(xClicks[1]);
+                    score++;
+                    scoreText.setText("" + score);
                     clickCount = 0;
+                    if(game.isempty()) {
+                        Toast.makeText(MainActivity.this,"you win!!", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else {
                     resetImage(xClicks[0]);
