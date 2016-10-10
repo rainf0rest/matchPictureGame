@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         game = new Game();
         game.init();
 
-        xClicks[0] = 0;
-        xClicks[1] = 0;
+        xClicks[0] = -1;
+        xClicks[1] = -1;
         clickCount = 0;
 
         one = (ImageView) findViewById(R.id.One);
@@ -95,15 +95,8 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 0;
                 clickCount++;
                 one.setImageResource(images[game.getNumber(0)]);
-                if (clickCount == 2) {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            jude();
-                        }
-                    }, 3000);
-                }
-                scoreText.append(" " + game.getNumber(0));
+                jude();
+                //scoreText.append(" " + game.getNumber(0));
             }
         });
 
@@ -113,16 +106,8 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 1;
                 clickCount++;
                 two.setImageResource(images[game.getNumber(1)]);
-                scoreText.append(" " + game.getNumber(1));
-
-                if (clickCount == 2) {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            jude();
-                        }
-                    }, 1000);
-                }
+                //scoreText.append(" " + game.getNumber(1));
+                jude();
             }
         });
 
@@ -132,10 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 2;
                 clickCount++;
                 three.setImageResource(images[game.getNumber(2)]);
-                scoreText.append(" " + game.getNumber(2));
-                if (clickCount == 2) {
-                    jude();
-                }
+                //scoreText.append(" " + game.getNumber(2));
+                jude();
             }
         });
 
@@ -145,11 +128,8 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 3;
                 clickCount++;
                 four.setImageResource(images[game.getNumber(3)]);
-                scoreText.append(" " + game.getNumber(3));
-
-                if (clickCount == 2) {
-                    jude();
-                }
+                //scoreText.append(" " + game.getNumber(3));
+                jude();
 
             }
         });
@@ -160,9 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 4;
                 clickCount++;
                 five.setImageResource(images[game.getNumber(4)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -172,9 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 5;
                 clickCount++;
                 six.setImageResource(images[game.getNumber(5)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -184,9 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 6;
                 clickCount++;
                 seven.setImageResource(images[game.getNumber(6)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
 
             }
         });
@@ -197,9 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 7;
                 clickCount++;
                 eight.setImageResource(images[game.getNumber(7)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -209,9 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 8;
                 clickCount++;
                 nine.setImageResource(images[game.getNumber(8)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
 
             }
         });
@@ -222,9 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 9;
                 clickCount++;
                 ten.setImageResource(images[game.getNumber(9)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -234,9 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 10;
                 clickCount++;
                 eleven.setImageResource(images[game.getNumber(10)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -246,9 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 11;
                 clickCount++;
                 twelve.setImageResource(images[game.getNumber(11)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -258,9 +222,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 12;
                 clickCount++;
                 thirteen.setImageResource(images[game.getNumber(12)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -270,9 +232,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 13;
                 clickCount++;
                 fourteen.setImageResource(images[game.getNumber(13)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -282,9 +242,7 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 14;
                 clickCount++;
                 fifteen.setImageResource(images[game.getNumber(14)]);
-                if (clickCount == 2) {
-                    jude();
-                }
+                jude();
             }
         });
 
@@ -294,27 +252,33 @@ public class MainActivity extends AppCompatActivity {
                 xClicks[clickCount] = 15;
                 clickCount++;
                 sixteen.setImageResource(images[game.getNumber(15)]);
-                if (clickCount == 2) {
-                    jude();
-                }
-
+                jude();
             }
         });
     }
 
 
     void jude() {
-        if(game.compare(xClicks[0], xClicks[1])) {
-            score ++;
-            //scoreText.setText("" + score);
-            game.setNumberToZreo(xClicks[0]);
-            game.setNumberToZreo(xClicks[1]);
+        if(clickCount == 1) {
+
+        }else
+        if(clickCount == 2) {
+            if(xClicks[0] == xClicks[1]){
+                clickCount--;
+            }
+            else {
+                if(game.compare(xClicks[0], xClicks[1]) == true) {
+                    clickCount = 0;
+                }
+                else {
+                    resetImage(xClicks[0]);
+                    xClicks[0] = xClicks[1];
+                    clickCount--;
+                }
+            }
+
         }
-        else{
-            resetImage(xClicks[0]);
-            resetImage(xClicks[1]);
-        }
-        clickCount = 0;
+
     }
 
     void resetImage(int imId) {
